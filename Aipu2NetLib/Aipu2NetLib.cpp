@@ -167,13 +167,7 @@ void UnmanagedAipu::LoadConfiguration(LPCWSTR nameFile) {
 }
 
 void UnmanagedAipu::RecognitionFaceFiles(LPCWSTR file, int client) {
-	/*const int sizeArray = sizeof(files) / sizeof(files[0]);	
-	string listFile[sizeArray];
-	for (int i = 0; i < sizeArray; i++) {
-		wstring lpcwstrToWstring(files[i]);
-		string wStringToString(lpcwstrToWstring.begin(), lpcwstrToWstring.end());
-		listFile[i] = wStringToString;
-	}*/
+	
 	wstring lpcwstrToWstring(file);
 	string wStringToString(lpcwstrToWstring.begin(), lpcwstrToWstring.end());	
 	aipuApi->RecognitionFaceFiles(wStringToString, client);
