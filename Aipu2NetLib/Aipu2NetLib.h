@@ -29,6 +29,7 @@ namespace Aipu2NetLib {
 		void SetHeightFrame(int value);
 		void CaptureFlow(int optionFlow);
 		void SetIpCamera(LPCWSTR ip);
+		void SetDeviceVideo(LPCWSTR device);
 		void SetFaceConfidenceThresh(int value);
 		void SetRefreshInterval(int value);
 		void SetMinEyeDistance(int minDistance);
@@ -43,6 +44,13 @@ namespace Aipu2NetLib {
 		void SetIsFinishLoadFiles(bool value);
 		bool GetIsFinishLoadFiles();
 		void RecognitionFaceFiles(LPCWSTR file, int client);
+		void ResetLowScore();
+		int GetCountLowScore();
+		void ResetCountNotDetect();
+		int GetCountNotDetect();
+		void SetDeepTrack(LPCWSTR value);
+		void ResetCountRepeatUser();
+		int GetCountRepeatUser();
 	private:
 
 	};
@@ -71,6 +79,24 @@ namespace Aipu2NetLib {
 			}
 		}
 
+		property System::Int32 GetCountLowScore {
+			System::Int32 get() {
+				return implementAipu->GetCountLowScore();
+			}
+		}
+
+		property System::Int32 GetCountNotDetect {
+			System::Int32 get() {
+				return implementAipu->GetCountNotDetect();
+			}
+		}
+
+		property System::Int32 GetCountRepeatUser {
+			System::Int32 get() {
+				return implementAipu->GetCountRepeatUser();
+			}
+		}
+
 		void InitLibrary();
 
 		void LoadConfiguration(System::String ^ fileString);
@@ -81,6 +107,7 @@ namespace Aipu2NetLib {
 		void SetHeightFrame(System::Int32 value);
 		void CaptureFlow(System::Int32 optionFlow);
 		void SetIpCamera(System::String ^ ip);
+		void SetDeviceVideo(System::String ^ device);
 		void SetFaceConfidenceThresh(System::Int32 value);
 		void SetRefreshInterval(System::Int32 value);
 		void SetMinEyeDistance(System::Int32 minDistance);
@@ -94,7 +121,10 @@ namespace Aipu2NetLib {
 		void ShowWindow(System::Int32 option);
 		void SetIsFinishLoadFiles(System::Boolean value);
 		void RecognitionFaceFiles(System::String ^ file, System::Int32 client);
-
+		void ResetLowScore();
+		void ResetCountNotDetect();
+		void SetDeepTrack(System::String ^ value);
+		void ResetCountRepeatUser();
 	protected:
 		!AipuNet() {
 			delete implementAipu;

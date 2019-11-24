@@ -58,6 +58,11 @@ void AipuNet::SetIpCamera(System::String ^ ip) {
 	implementAipu->SetIpCamera(address);
 }
 
+void AipuNet::SetDeviceVideo(System::String ^ device) {
+	pin_ptr<const WCHAR> dev = PtrToStringChars(device);
+	implementAipu->SetDeviceVideo(dev);
+}
+
 void AipuNet::SetNameWindow(System::String ^ name) {
 	pin_ptr<const WCHAR> nameWindow = PtrToStringChars(name);
 	implementAipu->SetNameWindow(nameWindow);
@@ -130,6 +135,23 @@ void AipuNet::RecognitionFaceFiles(System::String ^ file, System::Int32 client) 
 	
 }
 
+void AipuNet::ResetLowScore() {
+	implementAipu->ResetLowScore();
+}
+
+void AipuNet::ResetCountNotDetect() {
+	implementAipu->ResetCountNotDetect();
+}
+
+void AipuNet::SetDeepTrack(System::String ^ value) {
+	pin_ptr<const WCHAR> valueDeep = PtrToStringChars(value);
+	implementAipu->SetDeepTrack(valueDeep);
+}
+
+void AipuNet::ResetCountRepeatUser() {
+	implementAipu->ResetCountRepeatUser();
+}
+
 UnmanagedAipu::UnmanagedAipu()
 {
 	aipuApi = new AipuAPI();
@@ -181,6 +203,12 @@ void UnmanagedAipu::SetFileVideo(LPCWSTR file) {
 	wstring lpcwstrToWstring(file);
 	string wStringToString(lpcwstrToWstring.begin(), lpcwstrToWstring.end());
 	aipuApi->SetFileVideo(wStringToString);
+}
+
+void UnmanagedAipu::SetDeviceVideo(LPCWSTR device) {
+	wstring lpcwstrToWstring(device);
+	string wStringToString(lpcwstrToWstring.begin(), lpcwstrToWstring.end());
+	aipuApi->SetDeviceVideo(wStringToString);
 }
 
 void UnmanagedAipu::SetNameWindow(LPCWSTR name) {
@@ -259,4 +287,34 @@ void UnmanagedAipu::SetIsFinishLoadFiles(bool value) {
 
 bool UnmanagedAipu::GetIsFinishLoadFiles() {
 	return aipuApi->GetIsFinishLoadFiles();
+}
+
+void UnmanagedAipu::ResetLowScore() {
+	aipuApi->ResetLowScore();
+}
+
+int UnmanagedAipu::GetCountLowScore() {
+	return aipuApi->GetCountLowScore();
+}
+
+void UnmanagedAipu::ResetCountNotDetect() {
+	aipuApi->ResetCountNotDetect();
+}
+
+int UnmanagedAipu::GetCountNotDetect() {
+	return aipuApi->GetCountNotDetect();
+}
+
+void UnmanagedAipu::SetDeepTrack(LPCWSTR value) {
+	wstring lpcwstrToWstring(value);
+	string wStringToString(lpcwstrToWstring.begin(), lpcwstrToWstring.end());
+	aipuApi->SetDeepTrack(wStringToString);
+}
+
+void UnmanagedAipu::ResetCountRepeatUser() {
+	aipuApi->ResetCountRepeatUser();
+}
+
+int UnmanagedAipu::GetCountRepeatUser() {
+	return aipuApi->GetCountRepeatUser();
 }
