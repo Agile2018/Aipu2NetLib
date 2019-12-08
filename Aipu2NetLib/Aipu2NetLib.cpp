@@ -152,6 +152,28 @@ void AipuNet::ResetCountRepeatUser() {
 	implementAipu->ResetCountRepeatUser();
 }
 
+void AipuNet::InitLibraryIdentify() {
+	implementAipu->InitLibraryIdentify();
+}
+
+void AipuNet::SetTrackingMode(System::Int32 mode) {
+	implementAipu->SetTrackingMode(mode);
+}
+void AipuNet::SetTrackSpeed(System::Int32 speed) {
+	implementAipu->SetTrackSpeed(speed);
+}
+void AipuNet::SetMotionOptimization(System::Int32 motion) {
+	implementAipu->SetMotionOptimization(motion);
+}
+
+void AipuNet::StatePlay() {
+	implementAipu->StatePlay();
+}
+
+void AipuNet::StatePaused() {
+	implementAipu->StatePaused();
+}
+
 UnmanagedAipu::UnmanagedAipu()
 {
 	aipuApi = new AipuAPI();
@@ -159,7 +181,7 @@ UnmanagedAipu::UnmanagedAipu()
 
 UnmanagedAipu::~UnmanagedAipu()
 {
-	delete aipuApi;
+	//delete aipuApi;
 }
 
 LPCWSTR UnmanagedAipu::GetError() {
@@ -317,4 +339,26 @@ void UnmanagedAipu::ResetCountRepeatUser() {
 
 int UnmanagedAipu::GetCountRepeatUser() {
 	return aipuApi->GetCountRepeatUser();
+}
+
+void UnmanagedAipu::InitLibraryIdentify() {
+	aipuApi->InitLibraryIdentify();
+}
+
+void UnmanagedAipu::SetTrackingMode(int mode) {
+	aipuApi->SetTrackingMode(mode);
+}
+void UnmanagedAipu::SetTrackSpeed(int speed) {
+	aipuApi->SetTrackSpeed(speed);
+}
+void UnmanagedAipu::SetMotionOptimization(int motion) {
+	aipuApi->SetMotionOptimization(motion);
+}
+
+void UnmanagedAipu::StatePlay() {
+	aipuApi->StatePlay();
+}
+
+void UnmanagedAipu::StatePaused() {
+	aipuApi->StatePaused();
 }

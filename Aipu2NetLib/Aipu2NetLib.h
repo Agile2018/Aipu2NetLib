@@ -51,6 +51,12 @@ namespace Aipu2NetLib {
 		void SetDeepTrack(LPCWSTR value);
 		void ResetCountRepeatUser();
 		int GetCountRepeatUser();
+		void InitLibraryIdentify();
+		void SetTrackingMode(int mode);
+		void SetTrackSpeed(int speed);
+		void SetMotionOptimization(int motion);
+		void StatePlay();
+		void StatePaused();
 	private:
 
 	};
@@ -125,6 +131,12 @@ namespace Aipu2NetLib {
 		void ResetCountNotDetect();
 		void SetDeepTrack(System::String ^ value);
 		void ResetCountRepeatUser();
+		void InitLibraryIdentify();
+		void SetTrackingMode(System::Int32 mode);
+		void SetTrackSpeed(System::Int32 speed);
+		void SetMotionOptimization(System::Int32 motion);
+		void StatePlay();
+		void StatePaused();
 	protected:
 		!AipuNet() {
 			delete implementAipu;
