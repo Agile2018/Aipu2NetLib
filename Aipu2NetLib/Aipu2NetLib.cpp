@@ -214,7 +214,15 @@ void UnmanagedAipu::RecognitionFaceFiles(LPCWSTR file, int client) {
 	
 	wstring lpcwstrToWstring(file);
 	string wStringToString(lpcwstrToWstring.begin(), lpcwstrToWstring.end());	
-	aipuApi->RecognitionFaceFiles(wStringToString, client);
+	try
+	{
+		aipuApi->RecognitionFaceFiles(wStringToString, client);
+	}
+	catch (const std::exception& ex)
+	{
+		printf(ex.what());
+	}
+	
 }
 
 void UnmanagedAipu::SetIsRegister(bool option) {
